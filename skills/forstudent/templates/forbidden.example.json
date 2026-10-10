@@ -1,0 +1,10 @@
+{
+  "_설명": "선생님의 4번 답('웹앱에 들어가서는 안되는 정보')과 기본 금지 목록을 영어 열 이름과 한글 안내 낱말로 옮긴 것입니다. 이 파일을 프로젝트 맨 위에 forbidden.json 으로 복사해 고쳐 쓰세요.",
+  "fields": [
+    "name", "real_name", "full_name", "student_name", "first_name", "last_name",
+    "phone", "tel", "mobile", "email", "address", "birth", "birthday", "birthdate",
+    "resident_id", "rrn", "ssn", "photo", "image_url", "avatar_url", "guardian", "parent_name", "parent_phone"
+  ],
+  "words": ["이름", "성명", "전화", "연락처", "주소", "생년월일", "주민", "사진", "보호자"],
+  "allow": ["classes.name"]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "ForStudent"
+  short_description: "선생님이 학생을 위한 학습 웹앱을 질문부터 차근차근 만들기"
+  default_prompt: "Use $forstudent to plan and build a learning web app for my students."
