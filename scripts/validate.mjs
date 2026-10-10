@@ -37,6 +37,12 @@ const lines = text.split('\n').length
 if (lines > 500) fail(`SKILL.md 가 ${lines}줄이에요 (500줄 이내 권장)`)
 else ok(`SKILL.md ${lines}줄`)
 
+// 라이선스 파일
+const licensePath = join(repo, 'LICENSE')
+if (!existsSync(licensePath)) fail('LICENSE 파일이 없어요')
+else if (!/^MIT License/.test(readFileSync(licensePath, 'utf8'))) fail('LICENSE 가 MIT License 로 시작하지 않아요')
+else ok('LICENSE: MIT')
+
 // 2) 네 질문이 그대로 들어 있는가
 const QUESTIONS = [
   '학생의 배움이 멈추는 순간은 언제입니까?',
