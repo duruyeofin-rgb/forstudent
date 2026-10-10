@@ -50,13 +50,24 @@ skills/forstudent/
   evals/evals.json          스킬이 잘 불리는지 시험하는 질문 예시
 install.ps1 / install.sh    설치 스크립트
 scripts/                    validate.mjs (스킬 구조 점검), test-schema-rls.mjs (SQL 접근 규칙 시험)
+                            package.mjs (Claude 앱·웹 업로드용 forstudent.zip 만들기)
 ```
 
 ## 설치
 
-**처음 쓰는 선생님께**: 이 페이지 위쪽의 초록색 **Code** 버튼 → **Download ZIP**으로 내려받아 압축을 풀고, 그 폴더에서 아래 명령을 실행하세요. (GitHub 계정이 없어도 됩니다.) 저장소 주소: https://github.com/duruyeofin-rgb/forstudent
+쓰는 곳에 따라 방법이 다릅니다. (GitHub 계정이 없어도 됩니다.) 저장소 주소: https://github.com/duruyeofin-rgb/forstudent
 
-내려받은 폴더(`git clone` 또는 ZIP)에서 실행합니다.
+### Claude 앱·웹에서 쓰기 (스킬 업로드) — 가장 쉬운 방법
+
+1. **[forstudent.zip 내려받기](https://github.com/duruyeofin-rgb/forstudent/releases/latest/download/forstudent.zip)**
+2. **압축을 풀지 말고 그대로** Claude 설정의 스킬(Skills) 메뉴에서 올립니다. (메뉴 이름은 버전에 따라 다를 수 있어요.)
+3. 새 대화에서 쓰세요.
+
+> **주의**: 이 페이지의 초록색 **Code → Download ZIP**으로 받은 `forstudent-main.zip`은 업로드하지 마세요. 저장소 전체가 들어 있어서 `SKILL.md file must be in the top-level folder` 오류가 납니다. 위의 `forstudent.zip`은 `forstudent/SKILL.md` 구조로 미리 만들어 둔 파일입니다.
+
+### Claude Code · Codex에서 쓰기 (설치 스크립트)
+
+이 페이지 위쪽의 초록색 **Code** 버튼 → **Download ZIP**으로 내려받아 압축을 풀고, 그 폴더에서 아래 명령을 실행하세요. `git clone`한 폴더에서도 같습니다. 스크립트가 알아서 `skills/forstudent`를 설치 위치로 복사하므로 다시 압축할 필요가 없습니다.
 
 **Windows (PowerShell)**
 
@@ -79,7 +90,7 @@ scripts/                    validate.mjs (스킬 구조 점검), test-schema-rls
 |---|---|
 | Claude Code | `~/.claude/skills/forstudent` (한 프로젝트에만 쓰려면 `<프로젝트>/.claude/skills/forstudent`) |
 | Codex | `~/.codex/skills/forstudent` |
-| Claude 앱·웹 | `skills/forstudent` 폴더를 ZIP으로 압축해 설정의 스킬(Skills) 메뉴에서 올립니다 (메뉴 이름은 버전에 따라 다를 수 있어요). `Compress-Archive -Path skills\forstudent -DestinationPath forstudent.zip` |
+| Claude 앱·웹 | 위의 `forstudent.zip`을 설정의 스킬(Skills) 메뉴에서 올립니다 (복사가 아니라 업로드) |
 
 Codex의 `$skill-installer`로도 설치할 수 있습니다: `$skill-installer install https://github.com/duruyeofin-rgb/forstudent/tree/main/skills/forstudent`
 
@@ -97,7 +108,10 @@ Codex의 `$skill-installer`로도 설치할 수 있습니다: `$skill-installer 
 
 ## 업데이트
 
-저장소를 다시 내려받거나 `git pull`한 뒤 설치 스크립트를 다시 실행하면 새 내용으로 바뀝니다.
+설치한 스킬은 복사본이라서 저장소가 바뀌어도 저절로 바뀌지 않습니다. 새 내용을 받으려면 다시 설치하세요.
+
+- **Claude Code · Codex**: 저장소를 다시 내려받거나 `git pull`한 뒤 설치 스크립트를 다시 실행하면 새 내용으로 바뀝니다.
+- **Claude 앱·웹**: [Releases](https://github.com/duruyeofin-rgb/forstudent/releases)에서 최신 `forstudent.zip`을 받아 다시 올립니다. 같은 이름의 스킬이 이미 올라가 있으면 화면 안내에 따라 바꾸거나, 기존 스킬을 지운 뒤 올리세요.
 
 ## 안전 안내
 
@@ -112,6 +126,14 @@ npm install
 npm run validate       # 스킬 구조 점검 (이름·설명·길이·네 질문·가리키는 파일·비밀 값)
 npm run test:schema    # schema-starter.sql 적용과 접근 규칙 시험
 npm run check          # 위 둘을 모두
+npm run package        # dist/forstudent.zip 만들기 (Claude 앱·웹 업로드용, 맨 위 폴더 forstudent/)
+```
+
+**새 버전 내기**: 스킬을 고친 뒤 점검과 ZIP 만들기를 하고, 만든 ZIP을 Releases에 올립니다. 올리는 파일 이름은 항상 `forstudent.zip`이어야 위의 내려받기 링크가 계속 최신 파일을 가리킵니다.
+
+```bash
+npm run check && npm run package
+gh release create v0.2.0 dist/forstudent.zip --title "forstudent v0.2.0" --notes "바뀐 점"
 ```
 
 ## 라이선스

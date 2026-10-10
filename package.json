@@ -6,6 +6,7 @@
   "description": "선생님이 학생을 위한 학습 웹앱을 만들 때 쓰는 AI 스킬(forstudent)",
   "scripts": {
     "validate": "node scripts/validate.mjs",
+    "package": "node scripts/package.mjs",
     "test:schema": "node scripts/test-schema-rls.mjs",
     "check": "npm run validate && npm run test:schema"
   },
