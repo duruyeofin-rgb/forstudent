@@ -41,7 +41,9 @@ scripts/                    validate.mjs (스킬 구조 점검), test-schema-rls
 
 ## 설치
 
-저장소를 내려받은 뒤(`git clone` 또는 ZIP) 이 폴더에서 실행합니다.
+**처음 쓰는 선생님께**: 이 페이지 위쪽의 초록색 **Code** 버튼 → **Download ZIP**으로 내려받아 압축을 풀고, 그 폴더에서 아래 명령을 실행하세요. (GitHub 계정이 없어도 됩니다.) 저장소 주소: https://github.com/duruyeofin-rgb/forstudent
+
+내려받은 폴더(`git clone` 또는 ZIP)에서 실행합니다.
 
 **Windows (PowerShell)**
 
@@ -66,7 +68,7 @@ scripts/                    validate.mjs (스킬 구조 점검), test-schema-rls
 | Codex | `~/.codex/skills/forstudent` |
 | Claude 앱·웹 | `skills/forstudent` 폴더를 ZIP으로 압축해 설정의 스킬(Skills) 메뉴에서 올립니다 (메뉴 이름은 버전에 따라 다를 수 있어요). `Compress-Archive -Path skills\forstudent -DestinationPath forstudent.zip` |
 
-Codex의 `$skill-installer`로도 설치할 수 있습니다 (저장소가 공개일 때): `$skill-installer install https://github.com/<계정>/forstudent/tree/main/skills/forstudent`
+Codex의 `$skill-installer`로도 설치할 수 있습니다: `$skill-installer install https://github.com/duruyeofin-rgb/forstudent/tree/main/skills/forstudent`
 
 설치한 뒤에는 Claude / Codex를 **새로 시작**하고 **새 대화**에서 쓰세요.
 
